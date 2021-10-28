@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
-import { FaTwitter, FaEnvelope } from 'react-icons/fa';
+import { FaTwitter, FaEnvelope, FaTimes } from 'react-icons/fa';
 
 function App() {
 
+  // state
   const [email] = useState('youremail@gmail.com');
   const [copied, setCopy] = useState(false);
-
   const [toggled, setToggled] = useState(null);
 
+  // modal logic 
   const handleModal = () => {
     setToggled(!toggled);
   }
@@ -19,6 +20,7 @@ function App() {
     {!toggled && <ModalBtn onClick={handleModal}>Contact Me</ModalBtn> }
     {toggled && (
       <StyledContact>
+      <CloseModalBtn onClick={handleModal}><FaTimes/></CloseModalBtn>
       <BackDrop/>
       <Content>
         <Heading>Get in Touch</Heading>
@@ -28,7 +30,7 @@ function App() {
         <Button><FaEnvelope className="icon" style={{ marginRight: ".5rem", fontSize: "1.5rem"}}/> Drop me a line</Button>
         </CopyToClipboard>
 
-        <Button><FaTwitter className="icon" style={{ marginRight: ".5rem", fontSize: "1.5rem"}}/>Shoot me a tweet</Button>
+        <ButtonLink href="www.twitter.com"><FaTwitter className="icon" style={{ marginRight: ".5rem", fontSize: "1.5rem"}}/>Shoot me a tweet</ButtonLink>
         <br/>
         {copied && <span className="animate animate__animated animate__fadeOut animate__delay-2s">Copied email to clipboard</span>}
       </Content>
@@ -48,6 +50,22 @@ const ModalBtn = styled.button`
   background: slateblue;
   color: #eee;
   border-radius: 12px;
+  cursor: pointer;
+`;
+
+const CloseModalBtn = styled.button`
+  position: absolute;
+  border: none;
+  outline: none;
+  background: none;
+  height: 30px;
+  width: 30px;
+  color: #333;
+  font-size: 1.25rem;
+  padding: .25rem;
+  z-index: 9;
+  top: 1%;
+  left: 1%;
   cursor: pointer;
 `;
 
@@ -128,13 +146,44 @@ const Button = styled.button`
   display: flex;
   align-items: center;  
   max-width: 100%;
-  min-width: 250px;
+  width: 250px;
   border-radius: 15px;
   margin: .5rem 0;
   cursor: pointer;
 
   &:hover {
     transition: .2s all ease-in-out;
+    transition-delay: .1s;
+    background-color: rgba(255,255,255,.15);
+    transform: translateY(-3px);
+
+    .icon {
+      transition: .3s all ease-in-out;
+      transform: translateY(-3px) rotate(5deg);
+      filter: drop-shadow(1px 5px 3px #222);
+    }
+  }
+`;
+
+const ButtonLink = styled.a`
+  border: none;
+  outline: none;
+  padding: .75rem;
+  background-color: rgba(255,255,255,.1);
+  color: #eee;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;  
+  max-width: 100%;
+  width: 250px;
+  border-radius: 15px;
+  margin: .5rem 0;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    transition: .2s all ease-in-out;
+    transition-delay: .1s;
     background-color: rgba(255,255,255,.15);
     transform: translateY(-3px);
 
