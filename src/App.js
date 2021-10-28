@@ -2,7 +2,6 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { FaTwitter, FaEnvelope } from 'react-icons/fa';
-import './App.css';
 
 function App() {
 
