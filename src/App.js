@@ -153,7 +153,6 @@ const Button = styled.button`
 
   &:hover {
     transition: .2s all ease-in-out;
-    transition-delay: .1s;
     background-color: rgba(255,255,255,.15);
     transform: translateY(-3px);
 
@@ -183,7 +182,6 @@ const ButtonLink = styled.a`
 
   &:hover {
     transition: .2s all ease-in-out;
-    transition-delay: .1s;
     background-color: rgba(255,255,255,.15);
     transform: translateY(-3px);
 
