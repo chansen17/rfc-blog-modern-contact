@@ -30,7 +30,7 @@ function App() {
         <Button><FaEnvelope className="icon" style={{ marginRight: ".5rem", fontSize: "1.5rem"}}/> Drop me a line</Button>
         </CopyToClipboard>
 
-        <ButtonLink href="www.twitter.com"><FaTwitter className="icon" style={{ marginRight: ".5rem", fontSize: "1.5rem"}}/>Shoot me a tweet</ButtonLink>
+        <ButtonLink target="_blank" rel="noreferrer" href="www.twitter.com"><FaTwitter className="icon" style={{ marginRight: ".5rem", fontSize: "1.5rem"}}/>Shoot me a tweet</ButtonLink>
         <br/>
         {copied && <span className="animate animate__animated animate__fadeOut animate__delay-2s">Copied email to clipboard</span>}
       </Content>
